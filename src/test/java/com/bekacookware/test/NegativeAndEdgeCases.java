@@ -3,11 +3,11 @@ package com.bekacookware.test;
 import com.bekacookware.base.DriverFactory;
 import com.bekacookware.pages.*;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+
 
 public class NegativeAndEdgeCases extends DriverFactory {
 
-    SoftAssert softassert;
+
     HomePage homepage;
     ProductGridPage productgridpage;
     ProductDetailsPage productdetailspage;

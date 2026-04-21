@@ -3,6 +3,7 @@ package com.bekacookware.pages;
 
 
 import com.bekacookware.config.ConfigReader;
+import com.bekacookware.utility.UrlCheck;
 import com.bekacookware.utility.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Objects;
 
 public class HomePage{
 
@@ -30,7 +32,7 @@ public class HomePage{
     @FindBy(xpath = "//button[@aria-label='Close dialog']/*[local-name()='svg']")
     private WebElement closeButtonOnAddPopUp;
     public void clickCloseButtonOnAddPopUp() {
-        WaitUtils.waitUntillElementVisibility(driver,closeButtonOnAddPopUp).click();
+            WaitUtils.waitAndClickIfPresent(driver, closeButtonOnAddPopUp);
     }
 
     @FindBy(xpath = "//button[text()='Cookies accepteren']")
@@ -86,12 +88,17 @@ public class HomePage{
         Assert.assertTrue(WaitUtils.waitUntillElementVisibility(driver,footerOnHomePage).isDisplayed());
     }
 
-    @FindBy(tagName = "a")
+    @FindBy(xpath="//nav//a")
     private List<WebElement> navigationOnHomePage;
-    public void verifyNavigationOnHomePage() {
-        Assert.assertTrue(WaitUtils.waitUntillElementVisibility(driver,footerOnHomePage).isDisplayed());
+    public void verifyNavigationOnHomePage() throws InterruptedException {
+        for (WebElement aTag:navigationOnHomePage){
+            String href = aTag.getAttribute("href");
+            if (href != null && !href.startsWith("https://www.beka-cookware.com/customer_authentication")) {
+                Thread.sleep(3000);
+                Assert.assertEquals(UrlCheck.brokenUrlAndImageCheck(href),200, "Failed url:-"+href);
+            }
+        }
     }
-
 
     @FindBy(xpath = "//div[@class='icon icon-account']/parent::a")
     private WebElement accountIconButton;

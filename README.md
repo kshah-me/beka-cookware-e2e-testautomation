@@ -1,6 +1,6 @@
 # Beka-Cookware Ecommerce Test Automation TestNG
 
-### This is a complete project where an [E-commerce site](https://www.beka-cookware.com/) site is automated by writing test suites using selenium-webdriver and TestNG as testing framework
+### This is a complete project where an [E-commerce site](https://www.beka-cookware.com/) site is automated by writing test suites using selenium-webdriver and TestNG as testing framework. This Framework help to run application on different languages and could be configure in config.property file.
 
 The following key modules/pages are automated:
 
@@ -38,9 +38,6 @@ For failed test cases it will take a screenshot as well at the point of failure.
 
 - **src/test/java:**
   - **com.bekacookware.test:** Contains all testcases related to feature 
-
-- **pom.xml:** All maven project dependencies are mentioned here
-
 ---
 
 
