@@ -78,4 +78,9 @@ public class VerifyHomePage extends DriverFactory {
         homepage.verifyFooterOnHomePageDisplayed();
     }
 
+    @Test
+    public void verifyAllNavigationOnHomePage() throws InterruptedException {
+        homepage = new HomePage(DriverFactory.getDriver());
+        homepage.verifyNavigationOnHomePage();
+    }
 }

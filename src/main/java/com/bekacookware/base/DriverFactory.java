@@ -5,6 +5,7 @@ import com.bekacookware.config.ConfigReader;
 import com.bekacookware.pages.HomePage;
 
 import com.bekacookware.utility.CaptureScreenshotEvidence;
+import com.bekacookware.utility.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -84,6 +85,8 @@ public class DriverFactory {
             case "NL" -> homepage.selectDutchLanguage();
             case "FR" -> homepage.selectFrenchLanguage();
         }
+        WaitUtils.waitUntillPageLoaded(DriverFactory.getDriver());
+        homepage.clickCloseButtonOnAddPopUp();
     }
 
 
